@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Trisenpai Bootcamp</title>
+    
+    <!-- Menggunakan CDN dan Font yang sama dengan index.html untuk konsistensi -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Menambahkan style dasar agar konsisten dengan halaman utama */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+    <!-- Kontainer utama untuk memusatkan form login -->
+    <div class="flex items-center justify-center min-h-screen px-4 py-12">
+        
+        <div class="w-full max-w-md">
+            <!-- Card Login -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-lg shadow-cyan-500/10">
+                
+                <!-- Header Form -->
+                <div class="text-center mb-8">
+                    <a href="index.html" class="flex items-center justify-center space-x-2 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        <span class="text-2xl font-bold text-white">Trisenpai</span>
+                    </a>
+                    <h1 class="text-2xl font-bold text-white">Login ke Akun Anda</h1>
+                    <p class="text-slate-400 mt-1">Masukkan kredensial yang telah diberikan.</p>
+                </div>
+
+                <!-- Form Login -->
+                <form id="login-form" novalidate>
+                    <div class="space-y-4">
+                        <!-- Input Username -->
+                        <div>
+                            <label for="username" class="block text-sm font-medium text-slate-300 mb-2">Username</label>
+                            <input type="text" id="username" name="username" placeholder="contoh: mahasiswa" required 
+                                   class="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-colors">
+                        </div>
+                        
+                        <!-- Input Password -->
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-slate-300 mb-2">Password</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••" required
+                                   class="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Tempat untuk menampilkan pesan error -->
+                    <p id="error-message" class="text-red-400 text-sm text-center mt-4 h-5"></p>
+
+                    <!-- Tombol Submit -->
+                    <button type="submit" 
+                            class="w-full mt-6 bg-cyan-400 text-slate-900 font-bold px-5 py-3 rounded-lg hover:bg-cyan-500 transition-all transform hover:scale-105">
+                        Login
+                    </button>
+                </form>
+
+                <div class="text-center mt-6">
+                    <a href="index.html" class="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Kembali ke Halaman Utama</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Menghubungkan ke file JavaScript yang berisi logika -->
+    <script src="assets/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+#video-container {
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+#video-container.expanded {
+    max-height: 500px; /* Sesuaikan dengan tinggi video Anda */
+    opacity: 1;
+}
+
+.btn-3d {
+    background-color: #1e293b; /* bg-slate-800 */
+    border: 1px solid #334155; /* border-slate-700 */
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 600;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0 4px #0f172a; /* bg-slate-900 */
+}
+
+.btn-3d:hover {
+    background-color: #334155; /* bg-slate-700 */
+}
+
+.btn-3d:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #0f172a;
+}

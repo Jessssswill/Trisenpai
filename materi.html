@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pelajaran - C++</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS File -->
+    <link rel="stylesheet" href="assets/materi.css">
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+    <main class="container mx-auto p-4 md:p-8 max-w-4xl">
+        <button id="back-to-modules-btn" class="mb-6 flex items-center space-x-2 text-slate-300 hover:text-cyan-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+            <span>Kembali ke Modul</span>
+        </button>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8">
+            
+            <h1 id="lesson-title" class="text-4xl font-extrabold text-white mb-6">Memuat...</h1>
+
+            <!-- Konten Penjelasan -->
+            <div id="lesson-content" class="prose prose-invert prose-lg max-w-none text-slate-300 space-y-4"></div>
+
+            <!-- PERUBAHAN: Kontainer untuk GIF -->
+            <div id="lesson-gif-container" class="my-8 hidden">
+                <img id="lesson-gif" src="" alt="Lesson GIF" class="mx-auto rounded-lg border border-slate-700">
+            </div>
+
+            <!-- Instruksi dan Blok Kode -->
+            <div class="my-8">
+                <h2 class="text-xl font-semibold text-white mb-3">Instruksi</h2>
+                <p class="text-slate-400">Salin dan tempel baris kode di bawah ini.</p>
+                <div class="mt-4 bg-slate-950 rounded-lg overflow-hidden">
+                    <div class="flex justify-between items-center px-4 py-2 bg-slate-800">
+                        <span class="text-xs font-medium text-slate-400">main.cpp</span>
+                        <button id="copy-code-btn" class="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span id="copy-code-text">Salin</span>
+                        </button>
+                    </div>
+                    <pre class="p-4 text-sm"><code id="code-block" class="language-cpp"></code></pre>
+                </div>
+            </div>
+
+            <div id="output-section" class="my-8">
+                <p class="text-slate-400">Ini akan muncul di jendela Terminal jika Anda melakukannya dengan benar:</p>
+                <div class="mt-4 bg-slate-950 rounded-lg overflow-hidden">
+                    <div class="flex justify-between items-center px-4 py-2 bg-slate-800">
+                        <span class="text-xs font-medium text-slate-400">Terminal</span>
+                        <button id="copy-output-btn" class="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span id="copy-output-text">Salin</span>
+                        </button>
+                    </div>
+                    <pre class="p-4 text-sm text-slate-300"><code id="output-block"></code></pre>
+                </div>
+            </div>
+
+            <div class="mt-10 border-t border-slate-800 pt-6 space-y-4">
+                <div class="bg-slate-800/50 flex justify-between items-center p-4 rounded-lg">
+                    <span class="font-semibold text-slate-300">Walkthrough video</span>
+                    <button id="watch-video-btn" class="btn-3d flex items-center gap-2">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                        Watch video
+                    </button>
+                </div>
+                <div id="video-container" class="rounded-lg overflow-hidden bg-black">
+                    <video id="lesson-video" class="w-full" controls preload="none">
+                        <source src="" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                </div>
+            </div>
+            <div class="mt-10 border-t border-slate-800 pt-6 space-y-4">
+                </div>
+
+            <div id="completion-section" class="mt-10 border-t border-slate-800 pt-6">
+                <button id="mark-as-complete-btn" class="w-full text-center bg-cyan-500 text-slate-900 font-bold px-5 py-3 rounded-lg hover:bg-cyan-600 transition-all text-lg">
+                    Tandai Selesai & Kembali
+                </button>
+            </div>
+            </div> </main>
+        </div>
+    </main>
+
+    <!-- Custom JavaScript File -->
+    <script src="assets/materi.js"></script>
+</body>
+</html>

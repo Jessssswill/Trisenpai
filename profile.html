@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Saya - Algorithma</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/profile.css">
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+    <div id="bg-container">
+        <canvas id="bg-canvas"></canvas>
+    </div>
+    <header class="sticky top-0 z-20 header-blur">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="modul.html" class="inline-flex items-center space-x-2 text-slate-300 hover:text-cyan-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                <span>Kembali ke Modul</span>
+            </a>
+            <button id="logout-btn" class="text-sm text-red-400 hover:text-red-300 font-semibold">Logout</button>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8 relative z-10">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8">Profil Saya</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="card-ui p-6">
+                    <div class="flex flex-col md:flex-row items-start gap-8">
+                        <div class="w-full space-y-6 flex-grow">
+                            <div class="mb-4">
+                                <h2 id="display-name" class="text-2xl font-bold text-white"></h2>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Ubah Username</h3>
+                                <form id="update-username-form">
+                                    <label for="new-username" class="text-sm text-slate-400">Username *</label>
+                                    <input type="text" id="new-username" required class="mt-1 w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                                    <button type="submit" class="mt-3 btn-3d w-full text-sm py-2">Simpan Username</button>
+                                </form>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Ubah Password</h3>
+                                <form id="update-password-form">
+                                    <label for="new-password" class="text-sm text-slate-400">Password Baru</label>
+                                    <input type="password" id="new-password" required class="mt-1 w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                                    <button type="submit" class="mt-3 btn-3d w-full text-sm py-2">Simpan Password</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto flex-shrink-0">
+                             <div class="relative w-32 h-32 mx-auto">
+                                <img id="avatar-image" src="https://raw.githubusercontent.com/codedex-io/dev-codie/main/codie-pixel.png" alt="User Avatar" class="w-full h-full rounded-full object-cover border-4 border-slate-700">
+                                <div class="absolute bottom-1 right-1">
+                                    <button id="avatar-dropdown-toggle" class="bg-cyan-500 hover:bg-cyan-600 text-white p-2 rounded-full cursor-pointer" title="Ubah/Hapus Foto">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
+                                    </button>
+                                    <div id="avatar-dropdown-menu" class="hidden absolute right-0 bottom-full mb-2 bg-slate-800 border border-slate-700 rounded-md shadow-lg w-36">
+                                        <button id="change-avatar-option" class="block w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-slate-700">Ganti Foto</button>
+                                        <button id="remove-avatar-option" class="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-slate-700">Hapus Foto</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-center text-slate-500 mt-2">*Rasio 1:1 direkomendasikan</p>
+                            <input type="file" id="avatar-upload-input" class="hidden" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-ui p-6 border-red-500/30">
+                    <h3 class="text-lg font-bold text-red-400 mb-2">Zona Berbahaya</h3>
+                    <p class="text-sm text-slate-400 mb-4">Kamu akan mengulang semua progres dari awal</p>
+                    <button id="reset-progress-btn" class="w-full text-center bg-red-600/80 border border-red-500/50 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition-colors">
+                        Reset Progres Modul
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-6">
+                <div class="card-ui p-6">
+                    <h3 class="text-lg font-bold text-white mb-4">Ringkasan Progres</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-800/50 p-4 rounded-lg text-center">
+                            <p class="text-sm text-slate-400">Level</p>
+                            <p id="summary-level" class="text-3xl font-bold text-cyan-400"></p>
+                        </div>
+                        <div class="bg-slate-800/50 p-4 rounded-lg text-center">
+                            <p class="text-sm text-slate-400">Total XP</p>
+                            <p id="summary-xp" class="text-3xl font-bold text-amber-400"></p>
+                        </div>
+                        <div class="bg-slate-800/50 p-4 rounded-lg text-center">
+                            <p class="text-sm text-slate-400">Latihan</p>
+                            <p id="summary-exercises" class="text-3xl font-bold text-white"></p>
+                        </div>
+                        <div class="bg-slate-800/50 p-4 rounded-lg text-center">
+                            <p class="text-sm text-slate-400">Lencana</p>
+                            <p id="summary-badges" class="text-3xl font-bold text-white"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-ui p-6">
+                    <h3 class="text-lg font-bold text-white mb-4">Lencana yang Didapat</h3>
+                    <div id="profile-badge-container" class="flex flex-wrap gap-4">
+                        <p class="text-slate-500 text-sm">Belum ada lencana yang didapat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="success-notification" class="fixed bottom-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300">
+            Profil berhasil diperbarui!
+        </div>
+    </main>
+
+    <script src="assets/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Interaktif - C Learning Path</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS File -->
+    <link rel="stylesheet" href="assets/modul.css">
+</head>
+<body class="bg-slate-950 text-slate-200 overflow-x-hidden">
+
+    <!-- Canvas untuk Animasi 3D Latar Belakang -->
+    <div id="bg-container">
+        <canvas id="bg-canvas"></canvas>
+    </div>
+
+    <!-- Header Utama -->
+    <header class="sticky top-0 z-20 header-blur">
+    <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#" class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <span class="text-xl font-bold text-white">Algorithma</span>
+        </a>
+
+        <div class="flex items-center space-x-4">
+            <div class="lg:hidden">
+                <button id="hamburger-button" class="text-slate-300 hover:text-cyan-400 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <div id="profile-dropdown-container" class="hidden lg:block relative">
+                <button id="profile-button" class="flex items-center space-x-2">
+                <img id="header-avatar-image" src="https://raw.githubusercontent.com/codedex-io/dev-codie/main/codie-pixel.png" alt="User Avatar" class="w-8 h-8 rounded-full border-2 border-slate-600">
+                <span id="profile-card-name" class="font-semibold text-white"></span>
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+
+                <div id="profile-dropdown-menu" class="hidden absolute right-0 mt-2 w-48 card-ui !p-2 !rounded-md shadow-lg z-30">
+                    <a href="profile.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700/50 rounded">Profil Saya</a>
+                    <button id="logout-button" class="block w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-slate-700/50 rounded">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden lg:hidden container mx-auto px-6 pb-4">
+        <div class="border-t border-slate-700 pt-4 mt-4 space-y-2">
+           <a href="profile.html" class="block py-2 px-2 text-base text-slate-300 hover:bg-slate-700 rounded">Profil Saya</a>
+           <button id="logout-button-mobile" class="block w-full text-left py-2 px-2 text-base text-slate-300 hover:bg-slate-700 rounded">Logout</button>
+        </div>
+    </div>
+</header>
+
+    <main class="container mx-auto p-4 md:p-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <div class="mb-8">
+                    <h1 class="text-5xl font-extrabold text-white mb-2">C Learning Path</h1>
+                    <p class="text-slate-400 text-lg">Learn and master C programming language from scratch.</p>
+                </div>
+                <div id="module-container" class="space-y-3">
+                    <p class="text-slate-400">Memuat modul...</p>
+                </div>
+            </div>
+            <aside class="space-y-6 lg:sticky top-24 h-fit">
+                <!-- Kartu Profil -->
+                <div class="card-ui">
+                    <img id="sidebar-avatar-image" src="https://raw.githubusercontent.com/codedex-io/dev-codie/main/codie-pixel.png" alt="User Avatar" class="w-16 h-16 mx-auto mb-3 rounded-full object-cover">
+                    <h3 id="sidebar-profile-name" class="text-lg font-bold text-white">Alex Setiawan</h3>
+                    <p id="user-level" class="text-sm text-slate-400 mb-4">Level 1</p>
+                    <a href="profile.html" class="btn-3d w-full text-sm py-2">View Profile</a>
+                </div>
+
+                <!-- Kartu Progress Kursus -->
+                <div class="card-ui">
+                    <h3 class="text-lg font-bold text-white mb-4">Course Progress</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                <span>Exercises</span>
+                            </div>
+                            <span id="progress-exercises-text" class="font-medium text-white">0 / 15</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <span>XP Earned</span>
+                            </div>
+                            <span id="progress-xp-text" class="font-medium text-white">0 / 2355</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Lencana Kursus -->
+                <div class="card-ui">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-white">Course Badges</h3>
+                        <span id="badge-count" class="text-sm font-medium text-slate-400">0 / 4</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-4">Complete a milestone to earn a badge!</p>
+                    <div id="badge-container" class="grid grid-cols-4 gap-3"></div>
+                </div>
+
+                <!-- Kartu Cheat Sheets -->
+                <div class="card-ui">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-white">Cheat Sheets</h3>
+                        <span id="cheatsheet-count" class="text-sm font-medium text-slate-400">0 / 2</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-4">Unlock printables with C functions and concepts.</p>
+                    <div id="cheatsheet-container" class="space-y-2"></div>
+                </div>
+                
+                <!-- Kartu Komunitas -->
+                <div class="card-ui">
+                    <h3 class="text-lg font-bold text-white mb-2">Butuh Bantuan C?</h3>
+                    <p class="text-sm text-slate-400 mb-4">Ajukan pertanyaan di komunitas kami!</p>
+                    <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="btn-3d w-full">
+                        Go to Community
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Custom JavaScript File -->
+    <script src="assets/modul.js"></script>
+    
+    <!-- Skrip animasi disematkan langsung untuk keandalan -->
+    <script type="module">
+        import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
+
+        let camera, scene, renderer, points, line;
+        const mouse = new THREE.Vector2();
+        let mouseX = 0, mouseY = 0;
+
+        const particles = [];
+        const particleCount = 100;
+        const maxDistance = 100;
+
+        function init() {
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 4000);
+            camera.position.z = 1000;
+
+            scene = new THREE.Scene();
+
+            const pointsGeometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            
+            for (let i = 0; i < particleCount; i++) {
+                const x = Math.random() * 2000 - 1000;
+                const y = Math.random() * 2000 - 1000;
+                const z = Math.random() * 2000 - 1000;
+                
+                positions[i * 3] = x;
+                positions[i * 3 + 1] = y;
+                positions[i * 3 + 2] = z;
+
+                particles.push({
+                    position: new THREE.Vector3(x, y, z),
+                    velocity: new THREE.Vector3(-1 + Math.random() * 2, -1 + Math.random() * 2, -1 + Math.random() * 2)
+                });
+            }
+            pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+            const pointsMaterial = new THREE.PointsMaterial({
+                color: 0x0ea5e9, // sky-500
+                size: 10,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                sizeAttenuation: true
+            });
+
+            points = new THREE.Points(pointsGeometry, pointsMaterial);
+            scene.add(points);
+
+            const lineGeometry = new THREE.BufferGeometry();
+            const lineMaterial = new THREE.LineBasicMaterial({ 
+                color: 0x67e8f9, // cyan-300
+                transparent: true, 
+                opacity: 0.5 
+            });
+            line = new THREE.LineSegments(lineGeometry, lineMaterial);
+            scene.add(line);
+
+            renderer = new THREE.WebGLRenderer({
+                canvas: document.querySelector('#bg-canvas'),
+                antialias: true,
+            });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x020617, 1);
+
+            document.addEventListener('mousemove', onDocumentMouseMove);
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function onDocumentMouseMove(event) {
+            mouseX = event.clientX - window.innerWidth / 2;
+            mouseY = event.clientY - window.innerHeight / 2;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const positions = points.geometry.attributes.position.array;
+            const linePositions = [];
+
+            for (let i = 0; i < particleCount; i++) {
+                particles[i].position.add(particles[i].velocity);
+                
+                // Wrap around logic
+                if (particles[i].position.x < -1000 || particles[i].position.x > 1000) particles[i].velocity.x = -particles[i].velocity.x;
+                if (particles[i].position.y < -1000 || particles[i].position.y > 1000) particles[i].velocity.y = -particles[i].velocity.y;
+                if (particles[i].position.z < -1000 || particles[i].position.z > 1000) particles[i].velocity.z = -particles[i].velocity.z;
+
+                positions[i * 3] = particles[i].position.x;
+                positions[i * 3 + 1] = particles[i].position.y;
+                positions[i * 3 + 2] = particles[i].position.z;
+
+                // Check for lines
+                for (let j = i + 1; j < particleCount; j++) {
+                    const distance = particles[i].position.distanceTo(particles[j].position);
+                    if (distance < maxDistance) {
+                        linePositions.push(particles[i].position.x, particles[i].position.y, particles[i].position.z);
+                        linePositions.push(particles[j].position.x, particles[j].position.y, particles[j].position.z);
+                    }
+                }
+            }
+            
+            points.geometry.attributes.position.needsUpdate = true;
+            line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+
+            camera.position.x += (mouseX - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
