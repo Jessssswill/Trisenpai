@@ -33,3 +33,11 @@ body {
     transform: translateY(2px);
     box-shadow: 0 2px #0f172a;
 }
+
+pre {
+    white-space: pre-wrap;       /* Memastikan baris baru & spasi tetap ada, tapi teks bisa pindah baris */
+    word-wrap: break-word;       /* Memaksa kata yang sangat panjang (jika ada) untuk dipotong */
+    overflow-wrap: break-word;   /* Properti modern untuk hal yang sama */
+}
+
+/* Kurung kurawal '}' yang salah di akhir sudah dihapus dari versi ini */
