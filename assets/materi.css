@@ -1,43 +1,56 @@
 body {
-    font-family: 'Inter', sans-serif;
-}
-
-#video-container {
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-}
-
-#video-container.expanded {
-    max-height: 500px; /* Sesuaikan dengan tinggi video Anda */
-    opacity: 1;
+  font-family: "Inter", sans-serif;
 }
 
 .btn-3d {
-    background-color: #1e293b; /* bg-slate-800 */
-    border: 1px solid #334155; /* border-slate-700 */
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    color: white;
-    font-weight: 600;
-    transition: all 0.1s ease-in-out;
-    box-shadow: 0 4px #0f172a; /* bg-slate-900 */
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0 4px #0f172a;
 }
 
 .btn-3d:hover {
-    background-color: #334155; /* bg-slate-700 */
+  background-color: #334155;
 }
 
 .btn-3d:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px #0f172a;
+  transform: translateY(2px);
+  box-shadow: 0 2px #0f172a;
 }
 
 pre {
-    white-space: pre-wrap;       /* Memastikan baris baru & spasi tetap ada, tapi teks bisa pindah baris */
-    word-wrap: break-word;       /* Memaksa kata yang sangat panjang (jika ada) untuk dipotong */
-    overflow-wrap: break-word;   /* Properti modern untuk hal yang sama */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-/* Kurung kurawal '}' yang salah di akhir sudah dihapus dari versi ini */
+/* custom progress bar buat video player */
+#progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  height: 6px;
+}
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #22d3ee;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+#progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #22d3ee;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid white;
+}
