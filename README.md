@@ -93,4 +93,4 @@ Bootcamp itself: **ongoing**, batch berikutnya rencana Q1 2026.
 
 ---
 
-Made with care by [Jessen William](https://github.com/Jesssssswill)
+Made with care by [Jessen William](https://github.com/Jessssswill)
